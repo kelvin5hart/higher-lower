@@ -18,9 +18,9 @@ for entry in range(len(game_data.data)):
 def randomB (listOfEntries):
   return random.randint(0, len(followers) - 1)
 
-# Function to delete the use entry of A from the list to avoid generating a random number that will call it again
-def deleteA (listOfEntries, aInput):
-  return listOfEntries.remove(listOfEntries[aInput])
+# # Function to delete the use entry of A from the list to avoid generating a random number that will call it again
+# def deleteA (listOfEntries, aInput):
+#   return listOfEntries.remove(listOfEntries[aInput])
 
 score = 0
 A = randomB(followers)
@@ -53,6 +53,7 @@ while gameMode == 'yes':
       while B == A:
         B = randomB(followers)
       clear()
+      print (art.logo)
       print(f"You were right. Your score is {score}")
     else:
       print(f"Sorry, that's wrong. Final score: {score}")
@@ -71,6 +72,7 @@ while gameMode == 'yes':
       while B == A:
         B = randomB(followers)
       clear()
+      print (art.logo)
       print(f"You were right. Your score is {score}")
     else:
       print(f"Sorry, that's wrong. Final score: {score}")
