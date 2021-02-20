@@ -1,6 +1,7 @@
 import art
 import game_data
 import random
+from replit import clear
 
 # Print Logo
 print (art.logo)
@@ -15,15 +16,18 @@ for entry in range(len(game_data.data)):
 
 # Function to generate a random number for B from the followers
 def randomB (listOfEntries):
-  return random.randint(0, len(followers))
+  return random.randint(0, len(followers) - 1)
 
 # Function to delete the use entry of A from the list to avoid generating a random number that will call it again
 def deleteA (listOfEntries, aInput):
   return listOfEntries.remove(listOfEntries[aInput])
 
 score = 0
-A = 0
-B = randomB(followers) 
+A = randomB(followers)
+B = randomB(followers)
+
+while B == A:
+  B = randomB(followers)
 
 gameMode = 'yes'
 
@@ -38,28 +42,36 @@ while gameMode == 'yes':
   if playerChoice == 'A':
     if followers[A] > followers[B]:
       score += 1
-      print(f"You were right. Your score is {score}")
-      deleteA(details, A)
-      deleteA(followers, A)
-      if B != 0:
-        A = B - 1
-      else:
-        A = B
+      # deleteA(details, A)
+      # deleteA(followers, A)
+      # if B != 0:
+      #   A = B - 1
+      # else:
+      #   A = B 
+      A = B
       B = randomB(followers)
+      while B == A:
+        B = randomB(followers)
+      clear()
+      print(f"You were right. Your score is {score}")
     else:
       print(f"Sorry, that's wrong. Final score: {score}")
       gameMode = 'No'
   elif playerChoice == 'B':
     if followers[A] < followers[B]:
       score += 1
-      print(f"You were right. Your score is {score}")
-      deleteA(details, A)
-      deleteA(followers, A)
-      if B != 0:
-        A = B - 1
-      else:
-        A = B
+      # deleteA(details, A)
+      # deleteA(followers, A)
+      # if B != 0:
+      #   A = B - 1
+      # else:
+      #   A = B
+      A = B
       B = randomB(followers)
+      while B == A:
+        B = randomB(followers)
+      clear()
+      print(f"You were right. Your score is {score}")
     else:
       print(f"Sorry, that's wrong. Final score: {score}")
       gameMode = 'No'
